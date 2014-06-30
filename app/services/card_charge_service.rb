@@ -8,7 +8,8 @@ class CardChargeService
   end
 
   def charge_card!
-    Stripe.api_key = 'sk_test_6wWptHVBceNrlYCKC41ytWJi'
+    # Stripe.api_key = 'sk_test_6wWptHVBceNrlYCKC41ytWJi'
+    Stripe.api_key = Settings.stripe.api_key
  
     customer = Stripe::Customer.create(
       :email => @user.email,

@@ -43,7 +43,29 @@ hw3-2:
       self.per_page = Settings.posts['per_page'] || Settings.pagination.per_page
     end
     This would allow you to specify a custom value for per_page just for posts, or to fall back to your default value if not specified.
+    
+ ☐ YAML(*.yml) syntax error by showing like below(fixed by replace tabs with spaces). Any good method to make it easy to use in text editor?
+   Psych::SyntaxError: (<unknown>): found character that cannot start any token while scanning for the next token at line 3 column 1
 
+   Psych::SyntaxError: (<unknown>): found a tab character that violate intendation while scanning a plain scalar at line 3 column 17
+
+ ☐ After new gem installed, have to restart server(ex. rails s again), to make the newly-installed gem avaiable
+
+ ☐ How many conditions have to restart server?
+   new yml?
+   edit yml?
+   new model?
+   edit model?
+   edit service object?
+   controller?
+   html?
+   css?
+   js?
+   new gem?
+   new files in config?
+   edit files in config?
+
+ ☐ Use rails console, have to start the server first(rails s)
 
 hw3-4:
  ☐ why def function with a "!"

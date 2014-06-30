@@ -19,3 +19,4 @@ public/uploads
 
 # Ignore confidential settings
 /config/application.yml
+/TODO
