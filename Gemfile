@@ -58,3 +58,5 @@ end
 # Pay with credit card
 gem 'stripe'
 
+# Good places to put keys
+gem 'settingslogic'

@@ -5,27 +5,34 @@ class CardChargesController < ApplicationController
   def create
  
     @order = current_user.orders.find_by_token(params[:order_id])
-    @amount = @order.total * 100 # in cents
+
+    # @amount = @order.total * 100 # in cents
    
-    Stripe.api_key = 'sk_test_6wWptHVBceNrlYCKC41ytWJi'
+    # Stripe.api_key = 'sk_test_6wWptHVBceNrlYCKC41ytWJi'
  
-    customer = Stripe::Customer.create(
-      :email => current_user.email,
-      :card  => params[:stripeToken]
-      )
+    # customer = Stripe::Customer.create(
+    #   :email => current_user.email,
+    #   :card  => params[:stripeToken]
+    # )
  
  
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => @amount,
-      :description => @order.token ,
-      :currency    => 'usd'
-    )
+    # charge = Stripe::Charge.create(
+    #   :customer    => customer.id,
+    #   :amount      => @amount,
+    #   :description => @order.token ,
+    #   :currency    => 'usd'
+    # )
  
-    @order.set_payment_with!("credit_card")
-    @order.make_payment! 
+    # @order.set_payment_with!("credit_card")
+    # @order.make_payment! 
  
+    CardChargeService.new(@order, current_user, params[:stripeToken]).charge_card!
+
+    OrderMailer.notify_order_paid(@order).deliver
+
     redirect_to order_path(@order.token), :notice => "成功完成付款"
+    
+
  
     rescue Stripe::CardError => e
       flash[:error] = e.message
