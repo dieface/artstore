@@ -60,3 +60,6 @@ gem 'stripe'
 
 # Good places to put keys
 gem 'settingslogic'
+
+# Search engine
+gem 'ransack'
